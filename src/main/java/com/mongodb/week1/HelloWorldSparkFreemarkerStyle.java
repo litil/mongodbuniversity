@@ -1,4 +1,4 @@
-package com.mongodb;
+package com.mongodb.week1;
 
 import java.io.IOException;
 import java.io.StringWriter;
