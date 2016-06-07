@@ -4,7 +4,7 @@
 
   <groupId>com.mongodb</groupId>
   <artifactId>M101J</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0-w1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>M101J</name>
