@@ -74,26 +74,24 @@ public class BlogPostDAO {
         return permalink;
     }
 
-
-
-
-    // White space to protect the innocent
-
-
-
-
-
-
-
-
     // Append a comment to a blog post
-    public void addPostComment(final String name, final String email, final String body,
-                               final String permalink) {
-
-        // XXX HW 3.3, Work Here
-        // Hints:
+    public void addPostComment(final String name, final String email, final String body, final String permalink) {
         // - email is optional and may come in NULL. Check for that.
         // - best solution uses an update command to the database and a suitable
         //   operator to append the comment on to any existing list of comments
+
+        // build the document
+        Document comment = new Document();
+        comment.append("author", name);
+        comment.append("body", body);
+        if (email != null && email.equals("")){
+            comment.append("email", email);
+        }
+
+        Bson filter = new Document("permalink", permalink);
+        Bson value = new Document("comments", comment);
+        Bson update = new Document("$push", value);
+
+        postsCollection.updateOne(filter, update);
     }
 }
